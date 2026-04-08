@@ -3,9 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles/base.css">
+  <link rel="stylesheet" type="text/css" href="styles/index.css">
   <title>AulaNet</title>
 </head>
 <body>
-  
+  <header>
+    <div class="page-shell header-shell">
+      <div class="logo">
+        <i class="icon logo-icon" data-lucide="graduation-cap"></i>
+        <span>AulaNet</span>
+      </div>
+
+      <nav class="navbar" aria-label="Primary">
+        <a class="btn b1" href="pages/login.html">Login</a>
+        <a class="btn b2" href="pages/register.html">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="banner">
+      <div class="page-shell">
+        <h1>Welcome to AulaNet</h1>
+        <p>A collective academic platform where university students share knowledge, ask questions, and help each other succeed in their courses.</p>
+
+        <div class="banner-actions">
+          <a class="btn b1" href="pages/register.html">Get Started</a>
+          <a class="btn b2" href="pages/login.html">Sign In</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content page-shell">
+      <article class="info">
+        <div class="cards">
+          <div class="card">
+            <div class="rounded">
+              <i class="icon" data-lucide="search"></i>
+            </div>
+
+            <h3>Find Answers</h3>
+            <p>Search through thousands of questions and answers from your peers and professors.</p>
+          </div>
+
+          <div class="card">
+            <div class="rounded">
+              <i class="icon" data-lucide="users"></i>
+            </div>
+
+            <h3>Collaborate</h3>
+            <p>Connect with classmates and work together on challenging course material.</p>
+          </div>
+
+          <div class="card">
+            <div class="rounded">
+              <i class="icon" data-lucide="award"></i>
+            </div>
+
+            <h3>Build Reputation</h3>
+            <p>Earn reputation points by providing helpful answers and contributing to the community.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="recent-questions">
+        <div class="recent-questions-tit">
+          <h2>Recent Questions</h2>
+          <p>Sign in to ask questions and post answers</p>
+        </div>
+        <div class="questions-preview" id="questions-preview"></div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="page-shell">
+      <p>© 2026 AulaNet. Academic collaboration platform for university students.</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="scripts/index.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
 </body>
 </html>
