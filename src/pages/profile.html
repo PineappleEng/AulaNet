@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - AulaNet</title>
+    <link rel="stylesheet" href="../styles/profile.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="./home.html" class="logo">
+                <i data-lucide="graduation-cap" class="logo-icon"></i>
+                <span class="logo-text">AulaNet</span>
+            </a>
+            <div class="nav-links">
+                <a href="./home.html" class="nav-link">
+                    <i data-lucide="home"></i>
+                    <span class="nav-text">Home</span>
+                </a>
+                <a href="./create-question.html" class="nav-link">
+                    <i data-lucide="plus-circle"></i>
+                    <span class="nav-text">Ask Question</span>
+                </a>
+                <a href="./profile.html" class="nav-link">
+                    <i data-lucide="user"></i>
+                    <span class="nav-text">Profile</span>
+                </a>
+                <a href="../index.html" class="nav-link logout">
+                    <i data-lucide="log-out"></i>
+                    <span class="nav-text">Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-content">
+                <!-- Avatar -->
+                <div class="avatar-wrapper">
+                    <div class="avatar">
+                        <i data-lucide="user"></i>
+                    </div>
+                </div>
+
+                <!-- User Info -->
+                <div class="user-info">
+                    <div class="user-header">
+                        <div>
+                            <h1 class="user-name">Ana Silva</h1>
+                            <!-- Uncomment for admin users -->
+                            <!-- <span class="admin-badge">
+                <i data-lucide="award"></i>
+                Administrator
+              </span> -->
+                        </div>
+                    </div>
+
+                    <div class="user-details">
+                        <div class="detail-item">
+                            <i data-lucide="mail"></i>
+                            <span>ana.silva@university.edu</span>
+                        </div>
+                        <div class="detail-item">
+                            <i data-lucide="graduation-cap"></i>
+                            <span>Computer Science • 3rd Year</span>
+                        </div>
+                        <div class="detail-item">
+                            <i data-lucide="calendar"></i>
+                            <span>Joined September 15, 2023</span>
+                        </div>
+                        <div class="detail-item">
+                            <i data-lucide="award"></i>
+                            <span>487 reputation points</span>
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="stats-wrapper">
+                        <div class="stat-card questions">
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Questions</div>
+                        </div>
+                        <div class="stat-card answers">
+                            <div class="stat-value">34</div>
+                            <div class="stat-label">Answers</div>
+                        </div>
+                        <div class="stat-card reputation">
+                            <div class="stat-value">487</div>
+                            <div class="stat-label">Reputation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Tabs -->
+        <div class="content-tabs">
+            <!-- Tab Headers -->
+            <div class="tabs-header">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="questions">
+                        <i data-lucide="help-circle"></i>
+                        <span>Questions (12)</span>
+                    </button>
+                    <button class="tab-btn" data-tab="answers">
+                        <i data-lucide="message-square"></i>
+                        <span>Answers (34)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Questions Tab -->
+                <div id="questionsTab" class="tab-panel">
+                    <div class="questions-list">
+                        <!-- Question 1 -->
+                        <div class="question-card">
+                            <div class="question-content">
+                                <div class="question-stats">
+                                    <div class="stat-item-card">
+                                        <i data-lucide="trending-up"></i>
+                                        <span class="stat-item-value">15</span>
+                                        <span class="stat-item-label">votes</span>
+                                    </div>
+                                    <div class="stat-item-card">
+                                        <i data-lucide="message-square"></i>
+                                        <span class="stat-item-value">4</span>
+                                        <span class="stat-item-label">answers</span>
+                                    </div>
+                                </div>
+
+                                <div class="question-main">
+                                    <a href="/question/1.html" class="question-title">
+                                        How to implement binary search trees in Java?
+                                    </a>
+                                    <p class="question-description">
+                                        I'm working on my Data Structures assignment and need help understanding how to
+                                        implement a balanced
+                                        binary search tree. Can someone explain the rotation operations?
+                                    </p>
+                                    <div class="question-tags">
+                                        <span class="tag">Data Structures</span>
+                                        <span class="tag">Java</span>
+                                        <span class="tag">Algorithms</span>
+                                    </div>
+                                    <div class="question-meta">
+                                        <div class="meta-left">
+                                            <span>asked by <span class="author">Ana Silva</span></span>
+                                            <span>5d ago</span>
+                                        </div>
+                                        <div class="meta-right">
+                                            <i data-lucide="eye"></i>
+                                            <span>234 views</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="question-card">
+                            <div class="question-content">
+                                <div class="question-stats">
+                                    <div class="stat-item-card">
+                                        <i data-lucide="trending-up"></i>
+                                        <span class="stat-item-value">12</span>
+                                        <span class="stat-item-value">votes</span>
+                                    </div>
+                                    <div class="stat-item-card">
+                                        <i data-lucide="message-square"></i>
+                                        <span class="stat-item-value">3</span>
+                                        <span class="stat-item-label">answers</span>
+                                    </div>
+                                </div>
+
+                                <div class="question-main">
+                                    <a href="/question/2.html" class="question-title">
+                                        Time complexity of recursive algorithms
+                                    </a>
+                                    <p class="question-description">
+                                        Can someone help me understand how to calculate the time complexity of recursive
+                                        algorithms using
+                                        the Master Theorem?
+                                    </p>
+                                    <div class="question-tags">
+                                        <span class="tag">Algorithms</span>
+                                        <span class="tag">Complexity</span>
+                                        <span class="tag">Theory</span>
+                                    </div>
+                                    <div class="question-meta">
+                                        <div class="meta-left">
+                                            <span>asked by <span class="author">Ana Silva</span></span>
+                                            <span>8d ago</span>
+                                        </div>
+                                        <div class="meta-right">
+                                            <i data-lucide="eye"></i>
+                                            <span>189 views</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="question-card">
+                            <div class="question-content">
+                                <div class="question-stats">
+                                    <div class="stat-item-card">
+                                        <i data-lucide="trending-up"></i>
+                                        <span class="stat-item-value">8</span>
+                                        <span class="stat-item-label">votes</span>
+                                    </div>
+                                    <div class="stat-item-card">
+                                        <i data-lucide="message-square"></i>
+                                        <span class="stat-item-value">2</span>
+                                        <span class="stat-item-label">answers</span>
+                                    </div>
+                                </div>
+
+                                <div class="question-main">
+                                    <a href="/question/3.html" class="question-title">
+                                        Best practices for React state management
+                                    </a>
+                                    <p class="question-description">
+                                        I'm building a complex React application and wondering what the best approach is
+                                        for managing global
+                                        state. Should I use Context API or Redux?
+                                    </p>
+                                    <div class="question-tags">
+                                        <span class="tag">React</span>
+                                        <span class="tag">JavaScript</span>
+                                        <span class="tag">Web Development</span>
+                                    </div>
+                                    <div class="question-meta">
+                                        <div class="meta-left">
+                                            <span>asked by <span class="author">Ana Silva</span></span>
+                                            <span>12d ago</span>
+                                        </div>
+                                        <div class="meta-right">
+                                            <i data-lucide="eye"></i>
+                                            <span>421 views</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Answers Tab -->
+                <div id="answersTab" class="tab-panel hidden">
+                    <div class="empty-state">
+                        <i data-lucide="message-square"></i>
+                        <p>No answers posted yet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Tab switching functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const tabName = this.dataset.tab;
+
+                // Remove active class from all buttons
+                tabButtons.forEach(b => b.classList.remove('active'));
+
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                // Hide all tab panels
+                tabPanels.forEach(panel => panel.classList.add('hidden'));
+
+                // Show selected tab panel
+                const selectedPanel = document.getElementById(tabName + 'Tab');
+                if (selectedPanel) {
+                    selectedPanel.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
