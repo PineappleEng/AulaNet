@@ -1,112 +1,167 @@
 const recentQuestions = [
-  {
-    title: "How to implement binary search trees in Java?",
-    preview:
-      "I'm working on my Data Structures assignment and need help understanding how to implement a balanced binary search tree. Can someone explain the rotation operations?",
-    tags: ["Java", "Data Structures", "Binary Trees"],
-    askedBy: "Marina Costa",
-    upvotes: 42,
-    answers: 11,
-    views: 324,
-  },
-  {
-    title: "Best practices for database normalization?",
-    preview: "What are the main principles to follow when normalizing a database schema? I'm struggling with 3NF and BCNF.",
-    tags: ["Database", "SQL", "Design"],
-    askedBy: "Carlos Mendez",
-    upvotes: 28,
-    answers: 7,
-    views: 210,
-  }
+    {
+        id: 1,
+        title: "How to implement binary search trees in Java?",
+        description:
+            "I'm working on my Data Structures assignment and need help understanding how to implement a balanced binary search tree. Can someone explain the rotation operations?",
+        tags: ["Data Structures", "Java", "Algorithms"],
+        author: "Ana Silva",
+        timeAgo: "5d ago",
+        votes: 15,
+        answers: 4,
+        views: 234,
+    },
+    {
+        id: 2,
+        title: "Best practices for database normalization?",
+        description:
+            "What are the main principles to follow when normalizing a database schema? I'm struggling with 3NF and BCNF.",
+        tags: ["Database", "SQL", "Design"],
+        author: "Carlos Mendes",
+        timeAgo: "6d ago",
+        votes: 23,
+        answers: 7,
+        views: 456,
+    },
+    {
+        id: 3,
+        title: "Understanding RESTful API design principles",
+        description:
+            "I'm building my first REST API for a course project. What are the key principles I should follow for proper resource naming and HTTP method usage?",
+        tags: ["Web Development", "API", "REST"],
+        author: "Joao Santos",
+        timeAgo: "7d ago",
+        votes: 18,
+        answers: 5,
+        views: 312,
+    },
+    {
+        id: 4,
+        title: "Time complexity of recursive algorithms",
+        description:
+            "Can someone help me understand how to calculate the time complexity of recursive algorithms using the Master Theorem?",
+        tags: ["Algorithms", "Complexity", "Theory"],
+        author: "Ana Silva",
+        timeAgo: "8d ago",
+        votes: 12,
+        answers: 3,
+        views: 189,
+    },
 ];
 
-function createIcon(name) {
-  const icon = document.createElement("i");
-  icon.className = "icon";
-  icon.dataset.lucide = name;
-  return icon;
+function createLucideIcon(name) {
+    const icon = document.createElement("i");
+    icon.dataset.lucide = name;
+    return icon;
 }
 
-function createMetric(iconName, value) {
-  const metric = document.createElement("div");
-  metric.className = "metric";
+function createStatItem(iconName, value, label) {
+    const statItem = document.createElement("div");
+    statItem.className = "stat-item";
 
-  const valueText = document.createElement("span");
-  valueText.textContent = String(value);
+    const icon = createLucideIcon(iconName);
 
-  metric.append(createIcon(iconName), valueText);
-  return metric;
+    const valueSpan = document.createElement("span");
+    valueSpan.className = "stat-value";
+    valueSpan.textContent = String(value);
+
+    const labelSpan = document.createElement("span");
+    labelSpan.className = "stat-label";
+    labelSpan.textContent = label;
+
+    statItem.append(icon, valueSpan, labelSpan);
+    return statItem;
 }
 
 function createQuestionCard(question) {
-  const card = document.createElement("div");
-  card.className = "card question-preview-card";
+    const card = document.createElement("div");
+    card.className = "question-card";
 
-  const metrics = document.createElement("aside");
-  metrics.className = "question-metrics";
-  metrics.setAttribute("aria-label", "Question stats");
-  metrics.append(
-    createMetric("trending-up", question.upvotes),
-    createMetric("message-square", question.answers),
-  );
+    const content = document.createElement("div");
+    content.className = "question-content";
 
-  const details = document.createElement("div");
-  details.className = "question-details";
+    const stats = document.createElement("div");
+    stats.className = "question-stats";
+    stats.append(
+        createStatItem("trending-up", question.votes, "votes"),
+        createStatItem("message-square", question.answers, "answers"),
+    );
 
-  const title = document.createElement("h3");
-  title.textContent = question.title;
+    const main = document.createElement("div");
+    main.className = "question-main";
 
-  const preview = document.createElement("p");
-  preview.textContent = question.preview;
+    const titleLink = document.createElement("a");
+    titleLink.className = "question-title";
+    titleLink.href = `./pages/question.html?id=${question.id}`;
+    titleLink.textContent = question.title;
 
-  const tags = document.createElement("div");
-  tags.className = "question-tags";
-  tags.setAttribute("aria-label", "Question tags");
+    const description = document.createElement("p");
+    description.className = "question-description";
+    description.textContent = question.description;
 
-  question.tags.forEach((tagName) => {
-    const tag = document.createElement("span");
-    tag.className = "tag";
-    tag.textContent = tagName;
-    tags.appendChild(tag);
-  });
+    const tags = document.createElement("div");
+    tags.className = "question-tags";
 
-  const meta = document.createElement("div");
-  meta.className = "question-meta";
+    question.tags.forEach((tagName) => {
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = tagName;
+        tags.appendChild(tag);
+    });
 
-  const author = document.createElement("span");
-  author.textContent = `Asked by ${question.askedBy}`;
+    const meta = document.createElement("div");
+    meta.className = "question-meta";
 
-  const views = document.createElement("span");
-  views.className = "views-meta";
-  views.setAttribute("aria-label", `${question.views} views`);
+    const metaLeft = document.createElement("div");
+    metaLeft.className = "meta-left";
 
-  const viewsValue = document.createElement("span");
-  viewsValue.className = "meta-value";
-  viewsValue.textContent = String(question.views);
+    const askedBy = document.createElement("span");
+    askedBy.append("asked by ");
 
-  const viewsLabel = document.createElement("span");
-  viewsLabel.className = "meta-label";
-  viewsLabel.textContent = "views";
+    const author = document.createElement("span");
+    author.className = "author";
+    author.textContent = question.author;
+    askedBy.appendChild(author);
 
-  views.append(createIcon("eye"), viewsValue, viewsLabel);
-  meta.append(author, views);
+    const timeAgo = document.createElement("span");
+    timeAgo.textContent = question.timeAgo;
 
-  details.append(title, preview, tags, meta);
-  card.append(metrics, details);
+    metaLeft.append(askedBy, timeAgo);
 
-  return card;
+    const metaRight = document.createElement("div");
+    metaRight.className = "meta-right";
+
+    const eyeIcon = createLucideIcon("eye");
+
+    const views = document.createElement("span");
+    views.textContent = `${question.views} views`;
+
+    metaRight.append(eyeIcon, views);
+    meta.append(metaLeft, metaRight);
+
+    main.append(titleLink, description, tags, meta);
+    content.append(stats, main);
+    card.appendChild(content);
+
+    return card;
 }
 
-function renderQuestionPreviews() {
-  const previewContainer = document.getElementById("questions-preview");
-  if (!previewContainer) {
-    return;
-  }
+function renderRecentQuestions() {
+    const questionsList = document.getElementById("questionsList");
+    if (!questionsList) {
+        return;
+    }
 
-  previewContainer.innerHTML = "";
-  recentQuestions.forEach((question) => {
-    previewContainer.appendChild(createQuestionCard(question));
-  });
+    const cards = recentQuestions.map((question) => createQuestionCard(question));
+    questionsList.replaceChildren(...cards);
+
+    if (window.lucide && typeof window.lucide.createIcons === "function") {
+        window.lucide.createIcons();
+    }
 }
 
-renderQuestionPreviews();
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", renderRecentQuestions);
+} else {
+    renderRecentQuestions();
+}
