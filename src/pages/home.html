@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AulaNet - Home</title>
+    <link rel="stylesheet" href="../styles/home.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="./home.html" class="logo">
+                <i data-lucide="graduation-cap" class="logo-icon"></i>
+                <span class="logo-text">AulaNet</span>
+            </a>
+            <div class="nav-links">
+                <a href="./home.html" class="nav-link">
+                    <i data-lucide="home"></i>
+                    <span class="nav-text">Home</span>
+                </a>
+                <a href="./create-question.html" class="nav-link">
+                    <i data-lucide="plus-circle"></i>
+                    <span class="nav-text">Ask Question</span>
+                </a>
+                <a href="./profile.html" class="nav-link">
+                    <i data-lucide="user"></i>
+                    <span class="nav-text">Profile</span>
+                </a>
+                <a href="../index.html" class="nav-link logout">
+                    <i data-lucide="log-out"></i>
+                    <span class="nav-text">Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <div class="content-wrapper">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <h3>Filter by Subject</h3>
+                    <ul class="subject-list">
+                        <li><button class="subject-btn active" data-subject="all">All Subjects</button></li>
+                        <li><button class="subject-btn" data-subject="Data Structures">Data Structures</button></li>
+                        <li><button class="subject-btn" data-subject="Algorithms">Algorithms</button></li>
+                        <li><button class="subject-btn" data-subject="Database">Database</button></li>
+                        <li><button class="subject-btn" data-subject="Web Development">Web Development</button></li>
+                        <li><button class="subject-btn" data-subject="Software Engineering">Software
+                                Engineering</button></li>
+                        <li><button class="subject-btn" data-subject="Operating Systems">Operating Systems</button></li>
+                        <li><button class="subject-btn" data-subject="Networks">Networks</button></li>
+                        <li><button class="subject-btn" data-subject="Security">Security</button></li>
+                    </ul>
+
+                    <div class="stats-section">
+                        <h3>Community Stats</h3>
+                        <div class="stats-list">
+                            <div class="stat-item">
+                                <span>Questions</span>
+                                <span class="stat-value">2,847</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Answers</span>
+                                <span class="stat-value">8,921</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Users</span>
+                                <span class="stat-value">1,234</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Search Bar -->
+                <div class="search-card">
+                    <div class="search-wrapper">
+                        <div class="search-input-wrapper">
+                            <i data-lucide="search" class="search-icon"></i>
+                            <input type="text" class="search-input" placeholder="Search questions..." />
+                        </div>
+                        <div class="search-controls">
+                            <button class="filter-btn">
+                                <i data-lucide="filter"></i>
+                                <span>Filter</span>
+                            </button>
+                            <select class="sort-select">
+                                <option value="recent">Most Recent</option>
+                                <option value="votes">Most Voted</option>
+                                <option value="answers">Most Answered</option>
+                                <option value="views">Most Viewed</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="page-header-left">
+                        <i data-lucide="trending-up"></i>
+                        <h1>Recent Questions</h1>
+                    </div>
+                    <span class="question-count">0 questions</span>
+                </div>
+
+                <!-- Questions List -->
+                <div class="questions-list" id="questionsList"></div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="pagination-btn">Previous</button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">Next</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../scripts/home.js"></script>
+</body>
+
+</html>
