@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask a Question - AulaNet</title>
+    <link rel="stylesheet" href="../styles/create-question.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="./home.html" class="logo">
+                <i data-lucide="graduation-cap" class="logo-icon"></i>
+                <span class="logo-text">AulaNet</span>
+            </a>
+            <div class="nav-links">
+                <a href="./home.html" class="nav-link">
+                    <i data-lucide="home"></i>
+                    <span class="nav-text">Home</span>
+                </a>
+                <a href="./create-question.html" class="nav-link">
+                    <i data-lucide="plus-circle"></i>
+                    <span class="nav-text">Ask Question</span>
+                </a>
+                <a href="./profile.html" class="nav-link">
+                    <i data-lucide="user"></i>
+                    <span class="nav-text">Profile</span>
+                </a>
+                <a href="../index.html" class="nav-link logout">
+                    <i data-lucide="log-out"></i>
+                    <span class="nav-text">Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Ask a Question</h1>
+            <p>Share your question with the AulaNet community and get help from your peers.</p>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+            <!-- Main Form -->
+            <div class="form-wrapper">
+                <form id="questionForm">
+                    <!-- Title Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i data-lucide="help-circle"></i>
+                            <h2>Question Title</h2>
+                        </div>
+                        <p class="section-description">
+                            Be specific and imagine you're asking a question to another person.
+                        </p>
+                        <input type="text" id="questionTitle" class="form-input"
+                            placeholder="e.g., How do I implement a binary search tree in Java?" required />
+                    </div>
+
+                    <!-- Description Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i data-lucide="file-text"></i>
+                            <h2>Description</h2>
+                        </div>
+                        <p class="section-description">
+                            Include all the information someone would need to answer your question.
+                        </p>
+                        <textarea id="questionDescription" class="form-input form-textarea"
+                            placeholder="Provide more details about your question. What have you tried? What specific problem are you facing?"
+                            required></textarea>
+                    </div>
+
+                    <!-- Tags Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i data-lucide="tag"></i>
+                            <h2>Tags</h2>
+                        </div>
+                        <p class="section-description">
+                            Add up to 5 tags to help others find your question. Select from common subjects below.
+                        </p>
+
+                        <!-- Selected Tags -->
+                        <div id="selectedTags" class="selected-tags"></div>
+
+                        <!-- Available Tags -->
+                        <div class="available-tags" id="availableTags">
+                            <button type="button" class="tag-btn" data-tag="Data Structures">Data Structures</button>
+                            <button type="button" class="tag-btn" data-tag="Algorithms">Algorithms</button>
+                            <button type="button" class="tag-btn" data-tag="Java">Java</button>
+                            <button type="button" class="tag-btn" data-tag="Python">Python</button>
+                            <button type="button" class="tag-btn" data-tag="JavaScript">JavaScript</button>
+                            <button type="button" class="tag-btn" data-tag="Database">Database</button>
+                            <button type="button" class="tag-btn" data-tag="SQL">SQL</button>
+                            <button type="button" class="tag-btn" data-tag="Web Development">Web Development</button>
+                            <button type="button" class="tag-btn" data-tag="React">React</button>
+                            <button type="button" class="tag-btn" data-tag="API">API</button>
+                            <button type="button" class="tag-btn" data-tag="REST">REST</button>
+                            <button type="button" class="tag-btn" data-tag="Git">Git</button>
+                            <button type="button" class="tag-btn" data-tag="DevOps">DevOps</button>
+                            <button type="button" class="tag-btn" data-tag="Security">Security</button>
+                            <button type="button" class="tag-btn" data-tag="Networks">Networks</button>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Post Question</button>
+                        <button type="button" class="btn btn-secondary"
+                            onclick="window.location.href='./home.html'">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Guidelines Sidebar -->
+            <div class="guidelines-sidebar">
+                <div class="guidelines-card">
+                    <h3>Writing a Good Question</h3>
+                    <ul class="guidelines-list">
+                        <li class="guideline-item">
+                            <span class="guideline-number">1.</span>
+                            <span>Summarize your problem in a clear title</span>
+                        </li>
+                        <li class="guideline-item">
+                            <span class="guideline-number">2.</span>
+                            <span>Describe what you've tried and where you're stuck</span>
+                        </li>
+                        <li class="guideline-item">
+                            <span class="guideline-number">3.</span>
+                            <span>Include relevant code snippets if applicable</span>
+                        </li>
+                        <li class="guideline-item">
+                            <span class="guideline-number">4.</span>
+                            <span>Add appropriate tags for better visibility</span>
+                        </li>
+                        <li class="guideline-item">
+                            <span class="guideline-number">5.</span>
+                            <span>Be respectful and courteous to your peers</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Tag management
+        const selectedTags = [];
+        const maxTags = 5;
+
+        const selectedTagsContainer = document.getElementById('selectedTags');
+        const tagButtons = document.querySelectorAll('.tag-btn');
+
+        function updateTagsDisplay() {
+            // Update selected tags display
+            if (selectedTags.length > 0) {
+                selectedTagsContainer.innerHTML = selectedTags.map(tag => `
+          <span class="selected-tag">
+            ${tag}
+            <button type="button" class="remove-tag-btn" data-tag="${tag}">×</button>
+          </span>
+        `).join('');
+
+                // Add event listeners to remove buttons
+                selectedTagsContainer.querySelectorAll('.remove-tag-btn').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        removeTag(this.dataset.tag);
+                    });
+                });
+            } else {
+                selectedTagsContainer.innerHTML = '';
+            }
+
+            // Update available tag buttons
+            tagButtons.forEach(btn => {
+                const tag = btn.dataset.tag;
+                const isSelected = selectedTags.includes(tag);
+                const isMaxReached = selectedTags.length >= maxTags;
+
+                btn.disabled = isSelected || (isMaxReached && !isSelected);
+            });
+        }
+
+        function addTag(tag) {
+            if (!selectedTags.includes(tag) && selectedTags.length < maxTags) {
+                selectedTags.push(tag);
+                updateTagsDisplay();
+            }
+        }
+
+        function removeTag(tag) {
+            const index = selectedTags.indexOf(tag);
+            if (index > -1) {
+                selectedTags.splice(index, 1);
+                updateTagsDisplay();
+            }
+        }
+
+        // Add click event to tag buttons
+        tagButtons.forEach(btn => {
+            btn.addEventListener('click', function () {
+                addTag(this.dataset.tag);
+            });
+        });
+
+        // Form submission
+        document.getElementById('questionForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const title = document.getElementById('questionTitle').value;
+            const description = document.getElementById('questionDescription').value;
+
+            console.log('Question submitted:', {
+                title,
+                description,
+                tags: selectedTags
+            });
+
+            // Mock submission - redirect to home
+            window.location.href = './home.html';
+        });
+
+        // Initialize display
+        updateTagsDisplay();
+    </script>
+</body>
+
+</html>
