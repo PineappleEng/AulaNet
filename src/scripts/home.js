@@ -108,7 +108,7 @@ function createQuestionCard(question) {
 
     const titleLink = document.createElement("a");
     titleLink.className = "question-title";
-    titleLink.href = `./question.html?id=${question.id}`;
+    titleLink.href = `./question.php?id=${question.id}`;
     titleLink.textContent = question.title;
 
     const description = document.createElement("p");
