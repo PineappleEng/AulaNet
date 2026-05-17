@@ -6,23 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in to AulaNet</title>
     <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/common.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="nav-container">
-            <a href="../index.html" class="logo">
-                <i data-lucide="graduation-cap" class="logo-icon"></i>
-                <span class="logo-text">AulaNet</span>
-            </a>
-            <div class="nav-links">
-                <a href="./login.html" class="nav-link">Login</a>
-                <a href="./register.html" class="nav-link primary">Register</a>
-            </div>
-        </div>
-    </nav>
+    <!-- NAV -->
 
     <!-- Main Content -->
     <div class="main-container">
@@ -37,15 +26,15 @@
             </div>
 
             <!-- Login Form -->
-            <form class="form" id="loginForm">
+            <form class="form" id="loginForm" method="post" action="./login.php">
                 <div class="form-group">
                     <label for="email">University Email</label>
-                    <input type="email" id="email" placeholder="your.name@university.edu" required />
+                    <input type="email" id="email" name="email" placeholder="your.name@university.edu" required />
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password" required />
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required />
                 </div>
 
                 <div class="form-options">
@@ -75,13 +64,6 @@
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
-
-        // Handle form submission
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            // Mock login - redirect to home
-            window.location.href = './home.html';
-        });
     </script>
 </body>
 

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - AulaNet</title>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../styles/common.css">
     <style>
         * {
             margin: 0;
@@ -21,90 +22,7 @@
             min-height: 100vh;
         }
 
-        /* Navigation Bar */
-        nav {
-            background-color: white;
-            border-bottom: 1px solid #e5e7eb;
-            position: sticky;
-            top: 0;
-            z-index: 50;
-        }
-
-        .nav-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 64px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            transition: opacity 0.2s;
-        }
-
-        .logo:hover {
-            opacity: 0.8;
-        }
-
-        .logo-icon {
-            color: #2563eb;
-            width: 32px;
-            height: 32px;
-        }
-
-        .logo-text {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #111827;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #374151;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .nav-link:hover {
-            color: #2563eb;
-        }
-
-        .nav-link svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .nav-link .nav-text {
-            display: none;
-        }
-
-        .nav-link.logout {
-            color: #6b7280;
-        }
-
-        .nav-link.logout:hover {
-            color: #374151;
-        }
-
-        @media (min-width: 640px) {
-            .nav-link .nav-text {
-                display: inline;
-            }
-        }
+        /* (nav and footer moved to common.css) */
 
         /* Main Container */
         .main-container {
@@ -631,37 +549,30 @@
                 padding: 2rem;
             }
         }
+
+        /* Footer */
+        footer {
+            background-color: white;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 5rem;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-container p {
+            color: #4b5563;
+            font-size: 0.875rem;
+        }
     </style>
 </head>
 
 <body>
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="nav-container">
-            <a href="/home.html" class="logo">
-                <i data-lucide="graduation-cap" class="logo-icon"></i>
-                <span class="logo-text">AulaNet</span>
-            </a>
-            <div class="nav-links">
-                <a href="/home.html" class="nav-link">
-                    <i data-lucide="home"></i>
-                    <span class="nav-text">Home</span>
-                </a>
-                <a href="/admin.html" class="nav-link">
-                    <i data-lucide="shield"></i>
-                    <span class="nav-text">Admin</span>
-                </a>
-                <a href="/profile.html" class="nav-link">
-                    <i data-lucide="user"></i>
-                    <span class="nav-text">Profile</span>
-                </a>
-                <a href="/" class="nav-link logout">
-                    <i data-lucide="log-out"></i>
-                    <span class="nav-text">Logout</span>
-                </a>
-            </div>
-        </div>
-    </nav>
+    <!-- NAV -->
 
     <!-- Main Container -->
     <div class="main-container">
@@ -748,249 +659,242 @@
                                     <th>Reputation</th>
                                     <th>Status</th>
                                     <th class="text-right">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="usersTableBody">
-                                <!-- User 1 -->
-                                <tr>
-                                    <td>
-                                        <div class="user-cell">
-                                            <div class="user-avatar">
-                                                <span class="user-avatar-text">A</span>
-                                            </div>
-                                            <div class="user-info">
-                                                <div class="user-name">Ana Silva</div>
-                                                <div class="user-major">Computer Science</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="user-email">ana.silva@university.edu</td>
-                                    <td>
-                                        <span class="role-badge student">student</span>
-                                    </td>
-                                    <td>1240</td>
-                                    <td>
-                                        <span class="status-badge active">
-                                            <i data-lucide="check-circle"></i>
-                                            Active
-                                        </span>
-                                    </td>
-                                    <td style="text-align: right;">
-                                        <button class="action-btn">
-                                            <i data-lucide="more-vertical"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <!-- User 2 -->
-                                <tr>
-                                    <td>
-                                        <div class="user-cell">
-                                            <div class="user-avatar">
-                                                <span class="user-avatar-text">C</span>
-                                            </div>
-                                            <div class="user-info">
-                                                <div class="user-name">Carlos Mendes</div>
-                                                <div class="user-major">Software Engineering</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="user-email">carlos.mendes@university.edu</td>
-                                    <td>
-                                        <span class="role-badge student">student</span>
-                                    </td>
-                                    <td>890</td>
-                                    <td>
-                                        <span class="status-badge active">
-                                            <i data-lucide="check-circle"></i>
-                                            Active
-                                        </span>
-                                    </td>
-                                    <td style="text-align: right;">
-                                        <button class="action-btn">
-                                            <i data-lucide="more-vertical"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <!-- User 3 -->
-                                <tr>
-                                    <td>
-                                        <div class="user-cell">
-                                            <div class="user-avatar">
-                                                <span class="user-avatar-text">P</span>
-                                            </div>
-                                            <div class="user-info">
-                                                <div class="user-name">Prof. Maria Costa</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="user-email">maria.costa@university.edu</td>
-                                    <td>
-                                        <span class="role-badge admin">admin</span>
-                                    </td>
-                                    <td>3450</td>
-                                    <td>
-                                        <span class="status-badge active">
-                                            <i data-lucide="check-circle"></i>
-                                            Active
-                                        </span>
-                                    </td>
-                                    <td style="text-align: right;">
-                                        <button class="action-btn">
-                                            <i data-lucide="more-vertical"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <!-- User 4 -->
-                                <tr>
-                                    <td>
-                                        <div class="user-cell">
-                                            <div class="user-avatar">
-                                                <span class="user-avatar-text">J</span>
-                                            </div>
-                                            <div class="user-info">
-                                                <div class="user-name">João Santos</div>
-                                                <div class="user-major">Information Systems</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="user-email">joao.santos@university.edu</td>
-                                    <td>
-                                        <span class="role-badge student">student</span>
-                                    </td>
-                                    <td>654</td>
-                                    <td>
-                                        <span class="status-badge active">
-                                            <i data-lucide="check-circle"></i>
-                                            Active
-                                        </span>
-                                    </td>
-                                    <td style="text-align: right;">
-                                        <button class="action-btn">
-                                            <i data-lucide="more-vertical"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
 
-                <!-- Reports Tab -->
-                <div id="reportsTab" class="tab-panel hidden">
-                    <div class="reports-list">
-                        <!-- Report 1 -->
-                        <div class="report-card">
-                            <div class="report-header">
-                                <div class="report-info">
-                                    <div class="report-icon-wrapper pending">
-                                        <i data-lucide="alert-circle"></i>
-                                    </div>
-                                    <div>
-                                        <div class="report-badges">
-                                            <span class="content-type-badge answer">answer</span>
-                                            <span class="status-type-badge pending">pending</span>
-                                        </div>
-                                        <p class="report-by">
-                                            Reported by <span class="report-by-name">Ana Silva</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="report-actions">
-                                    <button class="report-btn remove">
-                                        <i data-lucide="trash-2"></i>
-                                        Remove
-                                    </button>
-                                    <button class="report-btn dismiss">
-                                        <i data-lucide="check-circle"></i>
-                                        Dismiss
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="report-body">
-                                <p class="report-reason">
-                                    <span class="report-reason-label">Reason:</span> Off-topic / Not relevant
-                                </p>
-                                <p class="report-preview">
-                                    This answer is completely off-topic and doesn't address...
-                                </p>
-                                <p class="report-date">2/6/2026, 9:00:00 AM</p>
-                            </div>
-                        </div>
+                <!-- FOOTER -->
+                <div class="user-name">Ana Silva</div>
+                <div class="user-major">Computer Science</div>
+            </div>
+        </div>
+        </td>
+        <td class="user-email">ana.silva@university.edu</td>
+        <td>
+            <span class="role-badge student">student</span>
+        </td>
+        <td>1240</td>
+        <td>
+            <span class="status-badge active">
+                <i data-lucide="check-circle"></i>
+                Active
+            </span>
+        </td>
+        <td style="text-align: right;">
+            <button class="action-btn">
+                <i data-lucide="more-vertical"></i>
+            </button>
+        </td>
+        </tr>
 
-                        <!-- Report 2 -->
-                        <div class="report-card">
-                            <div class="report-header">
-                                <div class="report-info">
-                                    <div class="report-icon-wrapper pending">
-                                        <i data-lucide="alert-circle"></i>
-                                    </div>
-                                    <div>
-                                        <div class="report-badges">
-                                            <span class="content-type-badge question">question</span>
-                                            <span class="status-type-badge pending">pending</span>
-                                        </div>
-                                        <p class="report-by">
-                                            Reported by <span class="report-by-name">Carlos Mendes</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="report-actions">
-                                    <button class="report-btn remove">
-                                        <i data-lucide="trash-2"></i>
-                                        Remove
-                                    </button>
-                                    <button class="report-btn dismiss">
-                                        <i data-lucide="check-circle"></i>
-                                        Dismiss
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="report-body">
-                                <p class="report-reason">
-                                    <span class="report-reason-label">Reason:</span> Inappropriate content
-                                </p>
-                                <p class="report-preview">
-                                    How do I hack into the university system?
-                                </p>
-                                <p class="report-date">2/6/2026, 10:30:00 AM</p>
-                            </div>
-                        </div>
+        <!-- User 2 -->
+        <tr>
+            <td>
+                <div class="user-cell">
+                    <div class="user-avatar">
+                        <span class="user-avatar-text">C</span>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name">Carlos Mendes</div>
+                        <div class="user-major">Software Engineering</div>
+                    </div>
+                </div>
+            </td>
+            <td class="user-email">carlos.mendes@university.edu</td>
+            <td>
+                <span class="role-badge student">student</span>
+            </td>
+            <td>890</td>
+            <td>
+                <span class="status-badge active">
+                    <i data-lucide="check-circle"></i>
+                    Active
+                </span>
+            </td>
+            <td style="text-align: right;">
+                <button class="action-btn">
+                    <i data-lucide="more-vertical"></i>
+                </button>
+            </td>
+        </tr>
 
-                        <!-- Report 3 - Resolved -->
-                        <div class="report-card">
-                            <div class="report-header">
-                                <div class="report-info">
-                                    <div class="report-icon-wrapper resolved">
-                                        <i data-lucide="check-circle"></i>
-                                    </div>
-                                    <div>
-                                        <div class="report-badges">
-                                            <span class="content-type-badge answer">answer</span>
-                                            <span class="status-type-badge resolved">resolved</span>
-                                        </div>
-                                        <p class="report-by">
-                                            Reported by <span class="report-by-name">João Santos</span>
-                                        </p>
-                                    </div>
-                                </div>
+        <!-- User 3 -->
+        <tr>
+            <td>
+                <div class="user-cell">
+                    <div class="user-avatar">
+                        <span class="user-avatar-text">P</span>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name">Prof. Maria Costa</div>
+                    </div>
+                </div>
+            </td>
+            <td class="user-email">maria.costa@university.edu</td>
+            <td>
+                <span class="role-badge admin">admin</span>
+            </td>
+            <td>3450</td>
+            <td>
+                <span class="status-badge active">
+                    <i data-lucide="check-circle"></i>
+                    Active
+                </span>
+            </td>
+            <td style="text-align: right;">
+                <button class="action-btn">
+                    <i data-lucide="more-vertical"></i>
+                </button>
+            </td>
+        </tr>
+
+        <!-- User 4 -->
+        <tr>
+            <td>
+                <div class="user-cell">
+                    <div class="user-avatar">
+                        <span class="user-avatar-text">J</span>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name">João Santos</div>
+                        <div class="user-major">Information Systems</div>
+                    </div>
+                </div>
+            </td>
+            <td class="user-email">joao.santos@university.edu</td>
+            <td>
+                <span class="role-badge student">student</span>
+            </td>
+            <td>654</td>
+            <td>
+                <span class="status-badge active">
+                    <i data-lucide="check-circle"></i>
+                    Active
+                </span>
+            </td>
+            <td style="text-align: right;">
+                <button class="action-btn">
+                    <i data-lucide="more-vertical"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+        </table>
+    </div>
+    </div>
+
+    <!-- Reports Tab -->
+    <div id="reportsTab" class="tab-panel hidden">
+        <div class="reports-list">
+            <!-- Report 1 -->
+            <div class="report-card">
+                <div class="report-header">
+                    <div class="report-info">
+                        <div class="report-icon-wrapper pending">
+                            <i data-lucide="alert-circle"></i>
+                        </div>
+                        <div>
+                            <div class="report-badges">
+                                <span class="content-type-badge answer">answer</span>
+                                <span class="status-type-badge pending">pending</span>
                             </div>
-                            <div class="report-body">
-                                <p class="report-reason">
-                                    <span class="report-reason-label">Reason:</span> Spam
-                                </p>
-                                <p class="report-preview">
-                                    Spam link to external website
-                                </p>
-                                <p class="report-date">2/5/2026, 2:20:00 PM</p>
-                            </div>
+                            <p class="report-by">
+                                Reported by <span class="report-by-name">Ana Silva</span>
+                            </p>
                         </div>
                     </div>
+                    <div class="report-actions">
+                        <button class="report-btn remove">
+                            <i data-lucide="trash-2"></i>
+                            Remove
+                        </button>
+                        <button class="report-btn dismiss">
+                            <i data-lucide="check-circle"></i>
+                            Dismiss
+                        </button>
+                    </div>
+                </div>
+                <div class="report-body">
+                    <p class="report-reason">
+                        <span class="report-reason-label">Reason:</span> Off-topic / Not relevant
+                    </p>
+                    <p class="report-preview">
+                        This answer is completely off-topic and doesn't address...
+                    </p>
+                    <p class="report-date">2/6/2026, 9:00:00 AM</p>
+                </div>
+            </div>
+
+            <!-- Report 2 -->
+            <div class="report-card">
+                <div class="report-header">
+                    <div class="report-info">
+                        <div class="report-icon-wrapper pending">
+                            <i data-lucide="alert-circle"></i>
+                        </div>
+                        <div>
+                            <div class="report-badges">
+                                <span class="content-type-badge question">question</span>
+                                <span class="status-type-badge pending">pending</span>
+                            </div>
+                            <p class="report-by">
+                                Reported by <span class="report-by-name">Carlos Mendes</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="report-actions">
+                        <button class="report-btn remove">
+                            <i data-lucide="trash-2"></i>
+                            Remove
+                        </button>
+                        <button class="report-btn dismiss">
+                            <i data-lucide="check-circle"></i>
+                            Dismiss
+                        </button>
+                    </div>
+                </div>
+                <div class="report-body">
+                    <p class="report-reason">
+                        <span class="report-reason-label">Reason:</span> Inappropriate content
+                    </p>
+                    <p class="report-preview">
+                        How do I hack into the university system?
+                    </p>
+                    <p class="report-date">2/6/2026, 10:30:00 AM</p>
+                </div>
+            </div>
+
+            <!-- Report 3 - Resolved -->
+            <div class="report-card">
+                <div class="report-header">
+                    <div class="report-info">
+                        <div class="report-icon-wrapper resolved">
+                            <i data-lucide="check-circle"></i>
+                        </div>
+                        <div>
+                            <div class="report-badges">
+                                <span class="content-type-badge answer">answer</span>
+                                <span class="status-type-badge resolved">resolved</span>
+                            </div>
+                            <p class="report-by">
+                                Reported by <span class="report-by-name">João Santos</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="report-body">
+                    <p class="report-reason">
+                        <span class="report-reason-label">Reason:</span> Spam
+                    </p>
+                    <p class="report-preview">
+                        Spam link to external website
+                    </p>
+                    <p class="report-date">2/5/2026, 2:20:00 PM</p>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
+    </div>
     </div>
 
     <script>

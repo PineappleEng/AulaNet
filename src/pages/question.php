@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+require __DIR__ . '/../includes/session.php';
+
 $questions = [
     1 => [
         'title' => 'How to implement binary search trees in Java?',
@@ -55,6 +57,19 @@ $questions = [
     ],
 ];
 
+// prepare components
+$nav = (function () {
+    ob_start();
+    include __DIR__ . '/../includes/components/nav.php';
+    return ob_get_clean();
+})();
+
+$footer = (function () {
+    ob_start();
+    include __DIR__ . '/../includes/components/footer.php';
+    return ob_get_clean();
+})();
+
 $questionId = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 $question = $questions[$questionId] ?? $questions[1];
 
@@ -67,6 +82,7 @@ $question = $questions[$questionId] ?? $questions[1];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question - AulaNet</title>
     <link rel="stylesheet" href="../styles/home.css">
+    <link rel="stylesheet" href="../styles/common.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         .question-detail-layout {
@@ -129,32 +145,7 @@ $question = $questions[$questionId] ?? $questions[1];
 </head>
 
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="./home.php" class="logo">
-                <i data-lucide="graduation-cap" class="logo-icon"></i>
-                <span class="logo-text">AulaNet</span>
-            </a>
-            <div class="nav-links">
-                <a href="./home.php" class="nav-link">
-                    <i data-lucide="home"></i>
-                    <span class="nav-text">Home</span>
-                </a>
-                <a href="./create-question.php" class="nav-link">
-                    <i data-lucide="plus-circle"></i>
-                    <span class="nav-text">Ask Question</span>
-                </a>
-                <a href="./profile.php" class="nav-link">
-                    <i data-lucide="user"></i>
-                    <span class="nav-text">Profile</span>
-                </a>
-                <a href="../index.php" class="nav-link logout">
-                    <i data-lucide="log-out"></i>
-                    <span class="nav-text">Logout</span>
-                </a>
-            </div>
-        </div>
-    </nav>
+    <?php echo $nav; ?>
 
     <div class="main-container">
         <div class="question-detail-layout">
@@ -187,9 +178,8 @@ $question = $questions[$questionId] ?? $questions[1];
         </div>
     </div>
 
-    <script>
-        lucide.createIcons();
-    </script>
+    <?php echo $footer; ?>
+
 </body>
 
 </html>

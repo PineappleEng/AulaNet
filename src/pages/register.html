@@ -6,23 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join AulaNet</title>
   <link rel="stylesheet" href="../styles/register.css">
+  <link rel="stylesheet" href="../styles/common.css">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
-  <!-- Navigation Bar -->
-  <nav>
-    <div class="nav-container">
-      <a href="../index.html" class="logo">
-        <i data-lucide="graduation-cap" class="logo-icon"></i>
-        <span class="logo-text">AulaNet</span>
-      </a>
-      <div class="nav-links">
-        <a href="./login.html" class="nav-link">Login</a>
-        <a href="./register.html" class="nav-link primary">Register</a>
-      </div>
-    </div>
-  </nav>
+  <!-- NAV -->
 
   <!-- Main Content -->
   <div class="main-container">
@@ -37,7 +26,7 @@
       </div>
 
       <!-- Register Form -->
-      <form class="form" id="registerForm">
+      <form class="form" id="registerForm" method="post" action="./register.php">
         <div class="form-group">
           <label for="name">Full Name</label>
           <input type="text" id="name" name="name" placeholder="Ana Silva" required />
@@ -108,24 +97,6 @@
   <script>
     // Initialize Lucide icons
     lucide.createIcons();
-
-    // Handle form submission
-    document.getElementById('registerForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      // Get form values
-      const password = document.getElementById('password').value;
-      const confirmPassword = document.getElementById('confirmPassword').value;
-
-      // Check if passwords match
-      if (password !== confirmPassword) {
-        alert('Passwords do not match!');
-        return;
-      }
-
-      // Mock registration - redirect to home
-      window.location.href = './home.html';
-    });
   </script>
 </body>
 
