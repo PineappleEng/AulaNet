@@ -1,53 +1,4 @@
-const recentQuestions = [
-    {
-        id: 1,
-        title: "How to implement binary search trees in Java?",
-        description:
-            "I'm working on my Data Structures assignment and need help understanding how to implement a balanced binary search tree. Can someone explain the rotation operations?",
-        tags: ["Data Structures", "Java", "Algorithms"],
-        author: "Ana Silva",
-        timeAgo: "5d ago",
-        votes: 15,
-        answers: 4,
-        views: 234,
-    },
-    {
-        id: 2,
-        title: "Best practices for database normalization?",
-        description:
-            "What are the main principles to follow when normalizing a database schema? I'm struggling with 3NF and BCNF.",
-        tags: ["Database", "SQL", "Design"],
-        author: "Carlos Mendes",
-        timeAgo: "6d ago",
-        votes: 23,
-        answers: 7,
-        views: 456,
-    },
-    {
-        id: 3,
-        title: "Understanding RESTful API design principles",
-        description:
-            "I'm building my first REST API for a course project. What are the key principles I should follow for proper resource naming and HTTP method usage?",
-        tags: ["Web Development", "API", "REST"],
-        author: "Joao Santos",
-        timeAgo: "7d ago",
-        votes: 18,
-        answers: 5,
-        views: 312,
-    },
-    {
-        id: 4,
-        title: "Time complexity of recursive algorithms",
-        description:
-            "Can someone help me understand how to calculate the time complexity of recursive algorithms using the Master Theorem?",
-        tags: ["Algorithms", "Complexity", "Theory"],
-        author: "Ana Silva",
-        timeAgo: "8d ago",
-        votes: 12,
-        answers: 3,
-        views: 189,
-    },
-];
+const questions = Array.isArray(window.AulaNetQuestions) ? window.AulaNetQuestions : [];
 
 function createLucideIcon(name) {
     const icon = document.createElement("i");
@@ -73,6 +24,20 @@ function createStatItem(iconName, value, label) {
     return statItem;
 }
 
+function createSubjectTags(tags) {
+    const tagsContainer = document.createElement("div");
+    const tagList = Array.isArray(tags) && tags.length > 0 ? tags : ["General"];
+
+    tagList.forEach((tagName) => {
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = tagName;
+        tagsContainer.appendChild(tag);
+    });
+
+    return tagsContainer;
+}
+
 function createQuestionCard(question) {
     const card = document.createElement("div");
     card.className = "question-card";
@@ -83,8 +48,8 @@ function createQuestionCard(question) {
     const stats = document.createElement("div");
     stats.className = "question-stats";
     stats.append(
-        createStatItem("trending-up", question.votes, "votes"),
         createStatItem("message-square", question.answers, "answers"),
+        createStatItem("eye", question.views, "views"),
     );
 
     const main = document.createElement("div");
@@ -101,13 +66,7 @@ function createQuestionCard(question) {
 
     const tags = document.createElement("div");
     tags.className = "question-tags";
-
-    question.tags.forEach((tagName) => {
-        const tag = document.createElement("span");
-        tag.className = "tag";
-        tag.textContent = tagName;
-        tags.appendChild(tag);
-    });
+    tags.appendChild(createSubjectTags(question.tags || [question.subject || "General"]));
 
     const meta = document.createElement("div");
     meta.className = "question-meta";
@@ -152,8 +111,26 @@ function renderRecentQuestions() {
         return;
     }
 
-    const cards = recentQuestions.map((question) => createQuestionCard(question));
-    questionsList.replaceChildren(...cards);
+    if (questions.length === 0) {
+        const emptyCard = document.createElement("div");
+        emptyCard.className = "question-card";
+
+        const emptyText = document.createElement("p");
+        emptyText.className = "question-description";
+        emptyText.textContent = "No questions have been posted yet.";
+
+        emptyCard.appendChild(emptyText);
+        questionsList.replaceChildren(emptyCard);
+    } else {
+        const cards = questions.map((question) => createQuestionCard(question));
+        questionsList.replaceChildren(...cards);
+    }
+
+    const countElement = document.querySelector(".question-count");
+    if (countElement) {
+        const label = questions.length === 1 ? "question" : "questions";
+        countElement.textContent = `${questions.length} ${label}`;
+    }
 
     if (window.lucide && typeof window.lucide.createIcons === "function") {
         window.lucide.createIcons();

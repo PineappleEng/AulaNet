@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require __DIR__ . '/../includes/session.php';
+require __DIR__ . '/../includes/db.php';
 require __DIR__ . '/../includes/render-template.php';
 
 // prepare components
@@ -18,26 +19,21 @@ $footer = (function () {
     return ob_get_clean();
 })();
 
-// If POST request, attempt a mock login and set session variables.
+// If POST request, authenticate against the database and set session variables.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-    $password = filter_input(INPUT_POST, 'password');
+    $password = (string) filter_input(INPUT_POST, 'password');
 
-    // In-memory/mock auth for now: treat any valid email as student,
-    // emails that contain 'admin' become administrators.
     if ($email === false || $email === null) {
         header('Location: ./login.php');
         exit;
     }
 
-    $role = (stripos($email, 'admin') !== false) ? 'admin' : 'student';
-
-    $user = [
-        'id' => random_int(1000, 9999),
-        'email' => $email,
-        'name' => strtok($email, '@'),
-        'role' => $role,
-    ];
+    $user = authenticate_user((string) $email, $password);
+    if ($user === null) {
+        header('Location: ./login.php?error=1');
+        exit;
+    }
 
     aulanet_login_user($user);
 
@@ -50,6 +46,7 @@ aulanet_render_template(__DIR__ . '/login.html', [
     './login.html' => './login.php',
     './register.html' => './register.php',
     './home.html' => './home.php',
+    '<!-- AUTH ERROR -->' => isset($_GET['error']) ? '<div class="auth-error">Invalid email or password.</div>' : '',
     '<!-- NAV -->' => $nav,
     '<!-- FOOTER -->' => $footer,
 ]);

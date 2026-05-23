@@ -19,6 +19,8 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             background-color: #f9fafb;
+            display: flex;
+            flex-direction: column;
             min-height: 100vh;
         }
 
@@ -341,6 +343,22 @@
             color: #dc2626;
         }
 
+        .status-badge.deleted {
+            color: #6b7280;
+        }
+
+        .user-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .user-protected {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
         .action-btn {
             padding: 0.5rem;
             background: none;
@@ -554,7 +572,7 @@
         footer {
             background-color: white;
             border-top: 1px solid #e5e7eb;
-            margin-top: 5rem;
+            margin-top: auto;
         }
 
         .footer-container {
@@ -592,7 +610,7 @@
                     <span class="stat-label">Total Users</span>
                     <i data-lucide="users" class="stat-icon blue"></i>
                 </div>
-                <div class="stat-value">4</div>
+                <div class="stat-value"><!-- ADMIN_TOTAL_USERS --></div>
             </div>
 
             <div class="stat-card">
@@ -600,7 +618,7 @@
                     <span class="stat-label">Pending Reports</span>
                     <i data-lucide="flag" class="stat-icon red"></i>
                 </div>
-                <div class="stat-value">2</div>
+                <div class="stat-value"><!-- ADMIN_PENDING_REPORTS --></div>
             </div>
 
             <div class="stat-card">
@@ -608,7 +626,7 @@
                     <span class="stat-label">Active Students</span>
                     <i data-lucide="users" class="stat-icon green"></i>
                 </div>
-                <div class="stat-value">3</div>
+                <div class="stat-value"><!-- ADMIN_ACTIVE_STUDENTS --></div>
             </div>
 
             <div class="stat-card">
@@ -616,7 +634,7 @@
                     <span class="stat-label">Blocked Users</span>
                     <i data-lucide="ban" class="stat-icon gray"></i>
                 </div>
-                <div class="stat-value">0</div>
+                <div class="stat-value"><!-- ADMIN_BLOCKED_USERS --></div>
             </div>
         </div>
 
@@ -632,7 +650,7 @@
                     <button class="tab-btn" data-tab="reports">
                         <i data-lucide="flag"></i>
                         <span>Content Moderation</span>
-                        <span class="tab-badge">2</span>
+                        <span class="tab-badge"><!-- ADMIN_PENDING_REPORTS --></span>
                     </button>
                 </div>
             </div>
@@ -641,14 +659,12 @@
             <div class="tab-content">
                 <!-- Users Tab -->
                 <div id="usersTab" class="tab-panel">
-                    <!-- Search -->
                     <div class="search-wrapper">
                         <i data-lucide="search" class="search-icon"></i>
                         <input type="text" class="search-input" placeholder="Search users by name or email..."
                             id="userSearch" />
                     </div>
 
-                    <!-- Users Table -->
                     <div class="table-wrapper">
                         <table>
                             <thead>
@@ -656,246 +672,30 @@
                                     <th>User</th>
                                     <th>Email</th>
                                     <th>Role</th>
-                                    <th>Reputation</th>
+                                    <th>Questions</th>
                                     <th>Status</th>
                                     <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody">
+                                <!-- ADMIN_USERS -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
-                <!-- FOOTER -->
-                <div class="user-name">Ana Silva</div>
-                <div class="user-major">Computer Science</div>
-            </div>
-        </div>
-        </td>
-        <td class="user-email">ana.silva@university.edu</td>
-        <td>
-            <span class="role-badge student">student</span>
-        </td>
-        <td>1240</td>
-        <td>
-            <span class="status-badge active">
-                <i data-lucide="check-circle"></i>
-                Active
-            </span>
-        </td>
-        <td style="text-align: right;">
-            <button class="action-btn">
-                <i data-lucide="more-vertical"></i>
-            </button>
-        </td>
-        </tr>
-
-        <!-- User 2 -->
-        <tr>
-            <td>
-                <div class="user-cell">
-                    <div class="user-avatar">
-                        <span class="user-avatar-text">C</span>
+                <!-- Reports Tab -->
+                <div id="reportsTab" class="tab-panel hidden">
+                    <div class="reports-list">
+                        <!-- ADMIN_REPORTS -->
                     </div>
-                    <div class="user-info">
-                        <div class="user-name">Carlos Mendes</div>
-                        <div class="user-major">Software Engineering</div>
-                    </div>
-                </div>
-            </td>
-            <td class="user-email">carlos.mendes@university.edu</td>
-            <td>
-                <span class="role-badge student">student</span>
-            </td>
-            <td>890</td>
-            <td>
-                <span class="status-badge active">
-                    <i data-lucide="check-circle"></i>
-                    Active
-                </span>
-            </td>
-            <td style="text-align: right;">
-                <button class="action-btn">
-                    <i data-lucide="more-vertical"></i>
-                </button>
-            </td>
-        </tr>
-
-        <!-- User 3 -->
-        <tr>
-            <td>
-                <div class="user-cell">
-                    <div class="user-avatar">
-                        <span class="user-avatar-text">P</span>
-                    </div>
-                    <div class="user-info">
-                        <div class="user-name">Prof. Maria Costa</div>
-                    </div>
-                </div>
-            </td>
-            <td class="user-email">maria.costa@university.edu</td>
-            <td>
-                <span class="role-badge admin">admin</span>
-            </td>
-            <td>3450</td>
-            <td>
-                <span class="status-badge active">
-                    <i data-lucide="check-circle"></i>
-                    Active
-                </span>
-            </td>
-            <td style="text-align: right;">
-                <button class="action-btn">
-                    <i data-lucide="more-vertical"></i>
-                </button>
-            </td>
-        </tr>
-
-        <!-- User 4 -->
-        <tr>
-            <td>
-                <div class="user-cell">
-                    <div class="user-avatar">
-                        <span class="user-avatar-text">J</span>
-                    </div>
-                    <div class="user-info">
-                        <div class="user-name">João Santos</div>
-                        <div class="user-major">Information Systems</div>
-                    </div>
-                </div>
-            </td>
-            <td class="user-email">joao.santos@university.edu</td>
-            <td>
-                <span class="role-badge student">student</span>
-            </td>
-            <td>654</td>
-            <td>
-                <span class="status-badge active">
-                    <i data-lucide="check-circle"></i>
-                    Active
-                </span>
-            </td>
-            <td style="text-align: right;">
-                <button class="action-btn">
-                    <i data-lucide="more-vertical"></i>
-                </button>
-            </td>
-        </tr>
-        </tbody>
-        </table>
-    </div>
-    </div>
-
-    <!-- Reports Tab -->
-    <div id="reportsTab" class="tab-panel hidden">
-        <div class="reports-list">
-            <!-- Report 1 -->
-            <div class="report-card">
-                <div class="report-header">
-                    <div class="report-info">
-                        <div class="report-icon-wrapper pending">
-                            <i data-lucide="alert-circle"></i>
-                        </div>
-                        <div>
-                            <div class="report-badges">
-                                <span class="content-type-badge answer">answer</span>
-                                <span class="status-type-badge pending">pending</span>
-                            </div>
-                            <p class="report-by">
-                                Reported by <span class="report-by-name">Ana Silva</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="report-actions">
-                        <button class="report-btn remove">
-                            <i data-lucide="trash-2"></i>
-                            Remove
-                        </button>
-                        <button class="report-btn dismiss">
-                            <i data-lucide="check-circle"></i>
-                            Dismiss
-                        </button>
-                    </div>
-                </div>
-                <div class="report-body">
-                    <p class="report-reason">
-                        <span class="report-reason-label">Reason:</span> Off-topic / Not relevant
-                    </p>
-                    <p class="report-preview">
-                        This answer is completely off-topic and doesn't address...
-                    </p>
-                    <p class="report-date">2/6/2026, 9:00:00 AM</p>
-                </div>
-            </div>
-
-            <!-- Report 2 -->
-            <div class="report-card">
-                <div class="report-header">
-                    <div class="report-info">
-                        <div class="report-icon-wrapper pending">
-                            <i data-lucide="alert-circle"></i>
-                        </div>
-                        <div>
-                            <div class="report-badges">
-                                <span class="content-type-badge question">question</span>
-                                <span class="status-type-badge pending">pending</span>
-                            </div>
-                            <p class="report-by">
-                                Reported by <span class="report-by-name">Carlos Mendes</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="report-actions">
-                        <button class="report-btn remove">
-                            <i data-lucide="trash-2"></i>
-                            Remove
-                        </button>
-                        <button class="report-btn dismiss">
-                            <i data-lucide="check-circle"></i>
-                            Dismiss
-                        </button>
-                    </div>
-                </div>
-                <div class="report-body">
-                    <p class="report-reason">
-                        <span class="report-reason-label">Reason:</span> Inappropriate content
-                    </p>
-                    <p class="report-preview">
-                        How do I hack into the university system?
-                    </p>
-                    <p class="report-date">2/6/2026, 10:30:00 AM</p>
-                </div>
-            </div>
-
-            <!-- Report 3 - Resolved -->
-            <div class="report-card">
-                <div class="report-header">
-                    <div class="report-info">
-                        <div class="report-icon-wrapper resolved">
-                            <i data-lucide="check-circle"></i>
-                        </div>
-                        <div>
-                            <div class="report-badges">
-                                <span class="content-type-badge answer">answer</span>
-                                <span class="status-type-badge resolved">resolved</span>
-                            </div>
-                            <p class="report-by">
-                                Reported by <span class="report-by-name">João Santos</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="report-body">
-                    <p class="report-reason">
-                        <span class="report-reason-label">Reason:</span> Spam
-                    </p>
-                    <p class="report-preview">
-                        Spam link to external website
-                    </p>
-                    <p class="report-date">2/5/2026, 2:20:00 PM</p>
                 </div>
             </div>
         </div>
+
     </div>
-    </div>
-    </div>
-    </div>
+
+    <!-- FOOTER -->
 
     <script>
         // Initialize Lucide icons
@@ -904,25 +704,27 @@
         // Tab switching
         const tabButtons = document.querySelectorAll('.tab-btn');
         const tabPanels = document.querySelectorAll('.tab-panel');
+        const activeTabName = new URLSearchParams(window.location.search).get('tab') === 'reports' ? 'reports' : 'users';
+
+        function setActiveTab(tabName) {
+            tabButtons.forEach((b) => b.classList.toggle('active', b.dataset.tab === tabName));
+            tabPanels.forEach((panel) => panel.classList.add('hidden'));
+
+            const selectedPanel = document.getElementById(tabName + 'Tab');
+            if (selectedPanel) {
+                selectedPanel.classList.remove('hidden');
+            }
+        }
+
+        setActiveTab(activeTabName);
 
         tabButtons.forEach(btn => {
             btn.addEventListener('click', function () {
-                const tabName = this.dataset.tab;
+                setActiveTab(this.dataset.tab);
 
-                // Remove active class from all buttons
-                tabButtons.forEach(b => b.classList.remove('active'));
-
-                // Add active class to clicked button
-                this.classList.add('active');
-
-                // Hide all tab panels
-                tabPanels.forEach(panel => panel.classList.add('hidden'));
-
-                // Show selected tab panel
-                const selectedPanel = document.getElementById(tabName + 'Tab');
-                if (selectedPanel) {
-                    selectedPanel.classList.remove('hidden');
-                }
+                const url = new URL(window.location.href);
+                url.searchParams.set('tab', this.dataset.tab || 'users');
+                window.history.replaceState({}, '', url.toString());
             });
         });
 
@@ -946,14 +748,6 @@
             });
         });
 
-        // Report action buttons
-        document.querySelectorAll('.report-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                const action = this.classList.contains('remove') ? 'Remove' : 'Dismiss';
-                console.log(action + ' report clicked');
-                alert(action + ' action would be performed here');
-            });
-        });
     </script>
 </body>
 

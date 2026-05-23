@@ -1,5 +1,11 @@
 /* Common layout (nav/footer) moved to common.css */
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 /* Main Container */
 .main-container {
     max-width: 1152px;
@@ -249,11 +255,115 @@
     border-color: #93c5fd;
 }
 
+/* Answers */
+.profile-answer-card {
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    display: grid;
+    gap: 0.9rem;
+}
+
+.profile-answer-card:hover {
+    border-color: #93c5fd;
+}
+
+.profile-answer-card-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.profile-answer-pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.profile-answer-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 9999px;
+    background: #f3f4f6;
+    color: #374151;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.profile-answer-pill.primary {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+.profile-answer-time {
+    font-size: 0.8rem;
+    color: #6b7280;
+    white-space: nowrap;
+}
+
+.profile-answer-question {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.profile-answer-question-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.profile-answer-question-link {
+    color: #111827;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.profile-answer-question-link:hover {
+    color: #2563eb;
+}
+
+.profile-answer-body {
+    color: #374151;
+    line-height: 1.6;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.profile-answer-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile-answer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.profile-answer-link:hover {
+    color: #1d4ed8;
+}
+
 /* Footer */
 footer {
     background-color: white;
     border-top: 1px solid #e5e7eb;
-    margin-top: 5rem;
+    margin-top: auto;
 }
 
 .question-content {
