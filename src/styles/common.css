@@ -133,6 +133,25 @@ footer {
     flex: 1 0 auto;
 }
 
+/* Make pages approximately 50% of the viewport width on larger screens
+   while keeping full width on small screens for usability. Pages can
+   override --aulanet-main-container-width to opt into a different width. */
+@media (min-width: 768px) {
+    .main-container {
+        width: var(--aulanet-main-container-width, 50%) !important;
+        max-width: var(--aulanet-main-container-width, 50%) !important;
+        margin: 0 auto !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .main-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 1rem !important;
+    }
+}
+
 .footer-container {
     max-width: 1280px;
     margin: 0 auto;

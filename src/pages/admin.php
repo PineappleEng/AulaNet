@@ -60,9 +60,9 @@ foreach ($users as $user) {
     $statusIcon = $statusClass === 'blocked' ? 'ban' : ($statusClass === 'deleted' ? 'trash-2' : 'check-circle');
     $userRows .= '<td><span class="status-badge ' . $statusClass . '"><i data-lucide="' . $statusIcon . '"></i>' . $statusLabel . '</span></td>';
     if ((int) $user['role_id'] === 1) {
-        $userRows .= '<td style="text-align: right;"><span class="user-protected">Protected admin</span></td>';
+        $userRows .= '<td class="text-right"><span class="user-protected">Protected admin</span></td>';
     } else {
-        $userRows .= '<td style="text-align: right;"><form method="post" action="./admin.php" class="user-actions">';
+        $userRows .= '<td class="text-right"><form method="post" action="./admin.php" class="user-actions">';
         $userRows .= '<input type="hidden" name="target_type" value="user">';
         $userRows .= '<input type="hidden" name="target_id" value="' . (int) $user['id'] . '">';
         if ($user['status'] === 'blocked' || $user['status'] === 'deleted') {

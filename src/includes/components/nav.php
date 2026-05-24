@@ -24,6 +24,10 @@ $role = aulanet_user_role();
         </a>
         <div class="nav-links">
             <?php if (!$logged) : ?>
+                <a href="<?php echo htmlspecialchars($P('/pages/home.php'), ENT_QUOTES, 'UTF-8'); ?>" class="nav-link">
+                    <i data-lucide="home"></i>
+                    <span class="nav-text">Home</span>
+                </a>
                 <a href="<?php echo htmlspecialchars($P('/pages/login.php'), ENT_QUOTES, 'UTF-8'); ?>" class="nav-link">Login</a>
                 <a href="<?php echo htmlspecialchars($P('/pages/register.php'), ENT_QUOTES, 'UTF-8'); ?>" class="nav-link primary">Register</a>
             <?php else : ?>

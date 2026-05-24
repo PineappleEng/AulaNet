@@ -45,6 +45,7 @@ function createQuestionTags(tags) {
 
     return tagsContainer;
 }
+
 function createQuestionCard(question) {
     const card = document.createElement("div");
     card.className = "question-card";
@@ -274,6 +275,7 @@ function renderQuestions() {
         window.lucide.createIcons();
     }
 }
+
 function renderSubjectButtons() {
     const list = document.getElementById("subjectList");
     if (!list) {

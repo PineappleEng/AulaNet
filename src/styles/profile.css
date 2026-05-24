@@ -8,6 +8,7 @@ body {
 
 /* Main Container */
 .main-container {
+    flex: 1 0 auto;
     max-width: 1152px;
     margin: 0 auto;
     padding: 2rem 1rem;
